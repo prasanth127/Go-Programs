@@ -1,4 +1,4 @@
-//go: palindrome program
+//go: palindrome_test.go (automated unit test program for testing palindrome functionality)
 
 //package word
 package main
