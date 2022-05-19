@@ -1,0 +1,119 @@
+#include<iostream>
+#include<array>
+#include<vector>
+#include<iterator>
+#include<algorithm>
+#include<numeric>
+
+using namespace std;
+
+const int SIZE = 12;
+
+int main()
+{
+    array<int,SIZE> a1{1,2,3,5,3,6,3,10,9,8,15,25};
+    ostream_iterator<int>out{cout," "};
+    
+    cout<<endl<<"using STL Algorithm: for_each"<<endl;
+    //for_each(a1.begin(),a1.end(),[](auto i){cout<<i<<"\t";});
+    std::copy(a1.begin(),a1.end(),out);
+    cout<<endl;
+    array<int,SIZE> a2(a1);
+    std::copy(a2.begin(),a2.end(),out);
+    //std::fill(begin(a2),end(a2),100);
+    cout<<endl;
+    std::copy(begin(a2),end(a2),out);
+    
+    cout<<endl<<"STL Algorithm \"fill_n\" \n";
+    //std::fill_n(begin(a2),3,1000);
+     cout<<endl;
+    std::copy(begin(a2),end(a2),out);
+    
+    array<char,SIZE> original_chars;
+    std::fill(begin(original_chars),end(original_chars),'A');
+    array<char,SIZE> chars(original_chars);
+    ostream_iterator<char>outchar{cout,"\t"};
+    cout<<endl;
+    std::copy(begin(original_chars),end(original_chars),outchar);
+    
+    cout<<endl<<"Using STL Algorithm generate :\n";
+    
+    generate(begin(chars),end(chars),[](){static char letter{'B'}; return letter++;});
+    std::copy(begin(chars),end(chars),outchar);
+    
+    cout<<endl<<"Using STL Algorithm generate_n :\n";
+    generate_n(begin(chars),3,[](){static char letter{'P'}; return letter++;});
+    std::copy(begin(chars),end(chars),outchar);
+    
+    //char word1[] = "HELTO";//65 : A; 96 :a
+    //char word2[] = "HELLO";
+    array<char,6> word1{"HELTO"};
+    array<char,6> word2{"HELLO"};
+    cout<<endl<<"STL algorithm: lexicographical_compare";
+    //bool result =std::lexicographical_compare(begin(original_chars),end(original_chars),begin(chars),end(chars))
+    bool result =std::lexicographical_compare(begin(word1),end(word1),begin(word2),end(word2));
+    
+    result ? cout<< endl<<"Word1 is < Word2" : cout<<endl<<"Word1 is >= Word2";
+    
+    cout<<endl<<"Finding out the mismatch:\n";
+    auto location = std::mismatch(begin(word1),end(word1),begin(word2),end(word2));
+    cout<<endl<<"mismatch occurred at "<<location.first-word1.begin()<<" = "<<word1[location.first-word1.begin()];
+    cout<<endl<<"mismatch occurred at "<<location.second-word2.begin()<<" = "<<word2[location.second-word2.begin()];
+    
+    auto retEqual = std::equal(begin(word1),end(word1),begin(word2),end(word2));
+    cout<<endl<<boolalpha<<retEqual;
+    
+    cout<<endl<<"STL Algorithm \"remove\" :\n";
+    cout<<endl<<"Before calling remove :\n";
+    std::copy(cbegin(a1),cend(a1),out);
+    auto new_end = std::remove(begin(a1),end(a1),3);
+    cout<<endl<<"After remove method being called.\n";
+    std::copy(cbegin(a1),cend(a1),out);
+    cout<<endl;
+    //(new_end(a1),end(1));
+    std::copy(begin(a1),new_end,out);
+    //std::erase(a1.new_end(),a1.end());
+    
+    //remove_if
+    //remove_copy
+    cout<<endl<<"STL Algorithm \"remove_copy\":\n";
+    array<int,SIZE> a3;
+    std::copy(cbegin(a1),cend(a1),out);
+    cout<<endl;
+    auto newEnd2 = std::remove_copy(cbegin(a1),cend(a1),begin(a3),10);
+    //std::copy(cbegin(a3),cend(a3),out);
+    std::copy(begin(a3),newEnd2,out);
+    
+    //remove_copy_if
+    cout<<endl<<"Using STL Algorithm : remove_copy_if \n";
+    std::array<int, SIZE> a4;//(a2);
+    //cout<<endl;
+    std::copy(cbegin(a2),cend(a2),out);
+    cout<<endl;
+    auto new_end3 = std::remove_copy_if(begin(a2),end(a2),begin(a4),[](auto x){return x<=10;});
+    //std::copy(cbegin(a4),cend(a4),out);
+    std::copy(begin(a4),new_end3,out);
+    
+    //replace
+    cout<<endl<<"STL Algorithm replace:\n";
+    array<int,SIZE> a5(a2);
+    std::copy(cbegin(a5),cend(a5),out);
+    std::replace(begin(a5),end(a5),3,100);
+    cout<<endl;
+    std::copy(cbegin(a5),cend(a5),out);
+    //replace_if
+    cout<<endl;
+    std::replace_if(begin(a5),end(a5),[](auto x){return x==100;},200);
+    std::copy(cbegin(a5),cend(a5),out);
+    //replace_copy
+    
+    //replace_copy_if
+    
+    
+    cout<<endl<<"STL Algorithm accumulate:\n";
+    cout<<endl<<"Sum of all container elements = "
+    <<std::accumulate(cbegin(a5),cend(a5),-179);
+    cout<<endl<<"Number of elements = "<<std::count(cbegin(a5),cend(a5),200);
+    return 0;
+}
+

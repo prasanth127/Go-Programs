@@ -1,0 +1,111 @@
+Stack implementation in C++:
+
+#include<iostream>
+
+ 
+
+using namespace std;
+
+ 
+
+class UnderFlowException:public std::exception
+{
+};
+class OverFlowException:public std::exception
+{
+};
+template<class T>
+class Stack
+{
+private:
+    struct node
+    {
+        T element;
+        node* next, *prev;
+        node() :next(NULL),prev(NULL){}
+        node(const T& e)
+        {
+            element = e;
+            next = prev = NULL;
+        }
+        ~node()
+        {
+        }
+    };
+    node* top;
+    int count;
+    int max_size;
+    T e;
+public:
+    Stack() :max_size(5), count(0) {}
+    template<class T>
+    Stack(const T& val) :e(val), max_size(5), count(0) {}
+    void push(const T& val)
+    {
+        try
+        {
+            if (count == max_size)
+                throw OverFlowException();
+            
+            node* temp = new node(val);
+            temp->next =  NULL;
+            if (top == NULL)
+            {
+                top = temp;
+            }
+            else
+            {
+                top->next = temp;
+                temp->prev = top;
+                top = temp;
+            }
+            count++;
+        }
+        catch (std::bad_alloc & e)
+        {
+            throw e.what();
+        }
+    }
+    T& pop()
+    {
+        if (is_empty())
+            throw UnderFlowException();
+        e = top->element;
+        node* temp = top;
+        top = top->prev;
+        delete temp;
+        count--;
+        return e;
+    }
+    bool is_empty()
+    {
+        return  count == 0;
+    }
+};
+
+ 
+
+int main(int argc, char* argv[])
+{
+    try
+    {
+        Stack<int> st;
+        st.push(10); cout << endl << "Pushed :" << 10;
+        st.push(100); cout << endl << "Pushed :" << 100;
+        cout << endl << "Popped:" << st.pop();
+        cout << endl << "Popped:" << st.pop();
+        //cout << endl << "Popped:" << st.pop();
+        st.push(500); cout << endl << "Pushed :" << 500;
+    }
+    catch (std::exception &e)
+    {
+        cout << endl << e.what();
+    }
+    catch (...)
+    {
+        cout << endl << "Caught generic expression." << endl;
+    }
+
+ 
+
+}

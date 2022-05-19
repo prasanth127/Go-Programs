@@ -1,0 +1,50 @@
+package main
+
+import "fmt"
+
+//Find the number of trailing zeroes in a given number
+func trailZeroCounter(n int) int {
+zeroCounter := 0
+//n = fac(x)
+//n = 120
+for n>0 {
+	r := n % 10	// 120/10 = 0 //12 %10 = 2
+	if r == 0 {
+		zeroCounter++ // 1
+	}else {
+		return zeroCounter //1
+	}
+	n = n/10	//120/10 = 12
+	//counter++
+}
+return zeroCounter
+}
+func fac( n uint64) uint64 {
+    var val,i uint64
+    val = 1
+    for i=2; i<=n; i++{
+        val = val * i
+    }
+    return val
+}
+//google gives 26! = 403291461126605635584000000
+func FindTrailZeros(n uint64) uint64 { // n = 9; n =26
+// 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9
+//n == 9
+// i=5
+    var res,i uint64 
+    res = 0
+    for i=5;i<=n;i=i*5 {
+        res = res + (uint64)(n/i) // res = 0 + 26/5 = 5 ;// 26/25 = 1// res + n/i = 5 + 1 = 6
+    }
+    return res // 6
+}
+
+func main(){
+    var n uint64
+    fmt.Println("Enter a number:")
+    fmt.Scan(&n)
+    //fmt.Println("Trailing zeroes in the given number", n, trailZeroCounter(n))
+    fmt.Println("Factorial of ",n,"is: ",fac(n))
+    fmt.Println("Trailing zeroes in the factorial of ",n,"is ", FindTrailZeros(n))
+}

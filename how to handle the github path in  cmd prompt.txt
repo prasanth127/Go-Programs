@@ -1,0 +1,49 @@
+Microsoft Windows [Version 10.0.19042.1348]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd desktop
+The system cannot find the path specified.
+
+C:\WINDOWS\system32>\lrn\lrn-go\wish>go mod init github.com/addresshome/wish
+The system cannot find the path specified.
+
+C:\WINDOWS\system32>cd desktop
+The system cannot find the path specified.
+
+C:\WINDOWS\system32>cd
+C:\WINDOWS\system32
+
+C:\WINDOWS\system32>cd/
+
+C:\>
+C:\>cd C:\Users\home\Desktop\go-workspace\wish
+
+C:\Users\home\Desktop\go-workspace\wish>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6E01-43E9
+
+ Directory of C:\Users\home\Desktop\go-workspace\wish
+
+25-11-2021  10:38    <DIR>          .
+25-11-2021  10:38    <DIR>          ..
+               0 File(s)              0 bytes
+               2 Dir(s)  76,893,679,616 bytes free
+
+C:\Users\home\Desktop\go-workspace\wish>go mod init github.com/addresshome/wish
+go: creating new go.mod: module github.com/addresshome/wish
+
+C:\Users\home\Desktop\go-workspace\wish>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6E01-43E9
+
+ Directory of C:\Users\home\Desktop\go-workspace\wish
+
+25-11-2021  12:09    <DIR>          .
+25-11-2021  12:09    <DIR>          ..
+25-11-2021  12:09                44 go.mod
+               1 File(s)             44 bytes
+               2 Dir(s)  76,893,638,656 bytes free
+
+C:\Users\home\Desktop\go-workspace\wish>notepad go.mod
+
+C:\Users\home\Desktop\go-workspace\wish>

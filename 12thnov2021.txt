@@ -1,0 +1,71 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include<iostream>
+#include<thread>
+#include<unistd.h>
+#include<mutex>
+
+//shared_mutex
+//unique_mutex
+//recursive_mutex
+//shared_lock
+//unique_lock
+
+using namespace std;
+//std::mutex mtx;
+std::recursive_mutex mtx;
+
+int gi = 0;//global int
+void consumer_func() //this reads data
+{
+    for(int i=0;i<5;i++)
+    {
+        //mtx.lock();
+        
+        {
+            std::lock_guard g(mtx);
+            cout<<endl<<"Consumer thread...gi = "<<gi<<" count ="<<i<<"\n";
+        }
+        //cout<<endl<<gi;
+        //mtx.unlock();
+        sleep(1);
+    }
+}
+void producer_func()
+{
+    for(int i=0;i<5;i++)
+    {
+        //mtx.lock();
+        {
+            std::lock_guard g(mtx);
+            //f1-->f2--->f3
+            cout<<endl<<"Producer thread...gi ="<<gi++<<" Count = "<<i<<"\n";
+        }
+        //mtx.unlock();
+        //gi++;
+        sleep(1);
+        
+    }
+}
+int main()
+{
+    cout<<endl<<"The number of cores/threads: "<<std::thread::hardware_concurrency();
+    std::thread consumer_thread{consumer_func};
+    std::thread producer_thread{producer_func};
+    
+    //for(int i=0; i < 1000;i++)
+    //{
+        
+    //}
+    consumer_thread.join();
+    producer_thread.join();
+    cout<<endl<<"Exiting main function.";
+    return 0;
+}
+

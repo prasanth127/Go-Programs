@@ -1,0 +1,49 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\home\Desktop\go-workspace> go run urlmonitor.go
+Polled at  2021-11-25 09:34:49.5824481 +0530 IST m=+0.593102801
+Inside State Monitor: urlStatus at 2021-11-25 09:34:49.5834455 +0530 IST m=+0.594100201
+Inside State Monitor: logState at 2021-11-25 09:34:49.9947903 +0530 IST m=+1.005445001
+2021/11/25 09:34:49 Current state:
+2021/11/25 09:34:49     http://www.google.com/   200 OK
+Inside State Monitor: logState at 2021-11-25 09:34:50.9946761 +0530 IST m=+2.005330801
+2021/11/25 09:34:50 Current state:
+2021/11/25 09:34:50     http://www.google.com/   200 OK
+Polled at  2021-11-25 09:34:51.080144 +0530 IST m=+2.090798701
+Inside State Monitor: urlStatus at 2021-11-25 09:34:51.0810167 +0530 IST m=+2.091671401
+Polled at  2021-11-25 09:34:51.1690806 +0530 IST m=+2.179735301
+Inside State Monitor: urlStatus at 2021-11-25 09:34:51.1690806 +0530 IST m=+2.179735301
+Inside State Monitor: logState at 2021-11-25 09:34:51.9949873 +0530 IST m=+3.005642001
+2021/11/25 09:34:51 Current state:
+2021/11/25 09:34:51     http://www.google.com/   200 OK
+2021/11/25 09:34:51     http://golang.org/   200 OK
+2021/11/25 09:34:52     http://blog.golang.org/   200 OK
+Polled at  2021-11-25 09:34:51.9949873 +0530 IST m=+3.005642001
+Inside State Monitor: urlStatus at 2021-11-25 09:34:52.022973 +0530 IST m=+3.033627701
+Inside State Monitor: logState at 2021-11-25 09:34:52.9948182 +0530 IST m=+4.005472901
+2021/11/25 09:34:52 Current state:
+2021/11/25 09:34:52     http://www.google.com/   200 OK
+2021/11/25 09:34:52     http://golang.org/   200 OK
+2021/11/25 09:34:53     http://blog.golang.org/   200 OK
+Inside State Monitor: logState at 2021-11-25 09:34:53.9996892 +0530 IST m=+5.010343901
+2021/11/25 09:34:53 Current state:
+2021/11/25 09:34:54     http://www.google.com/   200 OK
+2021/11/25 09:34:54     http://golang.org/   200 OK
+2021/11/25 09:34:54     http://blog.golang.org/   200 OK
+Polled at  2021-11-25 09:34:54.1372211 +0530 IST m=+5.147875801
+Inside State Monitor: urlStatus at 2021-11-25 09:34:54.1392282 +0530 IST m=+5.149882901
+Polled at  2021-11-25 09:34:54.233628 +0530 IST m=+5.244282701
+Inside State Monitor: urlStatus at 2021-11-25 09:34:54.233816 +0530 IST m=+5.244470701
+Polled at  2021-11-25 09:34:54.5496506 +0530 IST m=+5.560305301
+Inside State Monitor: urlStatus at 2021-11-25 09:34:54.5506563 +0530 IST m=+5.561311001
+Inside State Monitor: logState at 2021-11-25 09:34:55.0077634 +0530 IST m=+6.018418101
+2021/11/25 09:34:55 Current state:
+2021/11/25 09:34:55     http://blog.golang.org/   200 OK
+2021/11/25 09:34:55     http://www.google.com/   200 OK
+2021/11/25 09:34:55     http://golang.org/   200 OK
+Inside State Monitor: logState at 2021-11-25 09:34:55.9979816 +0530 IST m=+7.008636301
+2021/11/25 09:34:55 Current state:
+2021/11/25 09:34:55     http://www.google.com/   200 OK

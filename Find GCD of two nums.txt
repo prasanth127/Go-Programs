@@ -1,0 +1,45 @@
+/*
+Finding GCD of two numbers using Euclidian Algorithm
+gcd(a,b) == gcd(a-b,b) if a > b
+if b > a
+gcd(a,b) == gcd (b-a, a)
+*/
+package main
+
+import "fmt"
+
+func enhanced_gcd(a,b int) int {
+    if b == 0 {
+        return a
+    }else{
+        return enhanced_gcd(b, a%b)
+    }
+}
+func gcd(a,b int) int {
+    for a != b{
+        if a>b {
+            a = a - b
+        }else {
+            b = b - a
+        }
+    }
+    return a
+} //O(a-b).....
+func main(){
+    var a,b int
+    fmt.Println("Program to find the GCD of two numbers using Euclidian Algorithm:")
+    fmt.Println("Enter two numbers...")
+    fmt.Print("\na=")
+    fmt.Scan(&a)
+    fmt.Print("\nb=")
+    fmt.Scan(&b)
+    fmt.Println("gcd(",a,",",b,") = ",gcd(a,b))
+    fmt.Println("gcd(",a,",",b,") = ",enhanced_gcd(a,b))
+}
+
+//2805  1505
+// 1300,2805
+// 1505,1300
+//205,1300,
+//1095,205
+//

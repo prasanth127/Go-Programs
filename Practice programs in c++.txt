@@ -1,0 +1,129 @@
+1.......Area of rectangle 
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+
+int l,b,a;
+
+cout<<"enter l value"<<endl;
+cin>>l;
+cout<<"enter b value"<<endl;
+cin>>b;
+
+a=l*b;
+
+cout<<"area of rectangle value = "<<a<<endl;
+
+return 0;
+}
+
+
+2....student marks report------
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    char name[20];
+    int m1,m2,m3,total,avg;
+    
+    total = m1+m2+m3;
+    avg = total/3;
+    cout<<"enter name"<<endl;
+    cin>>name;
+    cout<<"enter m1 marks "<<"enter m2 marks "<<"enter m3 marks "<<endl;
+    cin>>m1>>m2>>m3;
+    
+    total = m1+m2+m3;
+    avg = total/3;
+    
+    cout<<"total value = "<<total<<endl;
+    cout<<"avg value = "<<avg<<endl;
+    return 0;
+}
+
+
+3.  to check two no's using if-else-if .............
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a,b;
+    cout<<"enter a value "<<endl;
+    cin>>a;
+    cout<<"enter b value "<<endl;
+    cin>>b;
+    
+    if(a>b)
+    {
+        cout<<"a is big value ";
+    }
+    else if(a<b)
+    {
+        cout<<"b is big value ";
+    }
+    else
+    {
+        cout<<"a is eqauls to b";
+    }
+    return 0;
+}
+
+
+4....Employee salary report
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    
+    char Name[20],job[20];
+    int employeeid;
+    long int  basic,hra,conveyance,medical,ma,pf;
+    float gsal,nsal;
+    cout<<"enter Name "<<endl;
+    cin>>Name;
+    cout<<"enter job "<<endl;
+    cin>>job;
+    cout<<"enter employee id "<<endl;
+    cin>>employeeid;
+    cout<<"enter basic"<<"enter hra "<<"enter conveyance "<<"enter medical "<<"enter ma"<<"enter pf "<<endl;
+    cin>>basic>>hra>>conveyance>>medical>>ma>>pf;
+    
+    gsal = basic+hra+conveyance+medical+ma+pf;
+    nsal = gsal-pf;
+    
+    cout<<" gsal = "<<gsal<<endl;
+    cout<<" nsal = "<<nsal<<endl;
+    return 0;
+    
+}
+
+5....golang program
+
+package main
+
+import "fmt"
+
+func main() {
+    var r,c,n int 
+    fmt.Printf(" enter no of rows")
+    fmt.Scanln(&n)
+    
+    for r=1; r<=n; r++ {
+        for c=1; c<=n; c++ {
+            fmt.Printf(" * ")
+        }
+        fmt.Printf("\n")
+    }
+}
+
+
+6...
