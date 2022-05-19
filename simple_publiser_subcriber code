@@ -1,0 +1,71 @@
+package main
+
+import (
+	"os"
+	"time"
+
+	log "github.com/sirupsen/logrus"
+)
+
+var (
+	topic = make(chan string, 10)
+	data  = make(chan string)
+	done  = make(chan bool)
+)
+
+func publisher() {
+	log.Println("Starting Publisher")
+	defer func() {
+		log.Println("Publisher is done")
+		close(topic)
+	}()
+	for {
+		select {
+		case v, ok := <-data:
+			if !ok {
+				return
+			}
+			log.Println("Published message:", v)
+			topic <- v
+		}
+	}
+}
+
+func subscriber() {
+	log.Println("Starting Subscriber")
+	for msg := range topic {
+		log.Println("Received message:", msg)
+	}
+
+	log.Println("Subscriber is done")
+	done <- true
+}
+
+func main() {
+	//zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	// Log as JSON instead of the default ASCII formatter.
+	logFormatter := new(log.TextFormatter)
+	logFormatter.TimestampFormat = "2006-01-02T15:04:05.999999999Z07:00"
+	logFormatter.FullTimestamp = true
+	log.SetFormatter(logFormatter)
+
+	// Output to stdout instead of the default stderr
+	// Can be any io.Writer, see below for File example
+	log.SetOutput(os.Stdout)
+
+	// Only log the warning severity or above.
+	log.SetLevel(log.DebugLevel)
+	go publisher()
+	go subscriber()
+
+	data <- "hello"
+	time.Sleep(1 * time.Second)
+	data <- "wow"
+	time.Sleep(1 * time.Second)
+	data <- "happy new year 2022"
+
+	close(data)
+
+	<-done
+	log.Println("Main is done")
+}
